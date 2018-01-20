@@ -4,13 +4,13 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Screenshots
 
-!["Products index"]()
+!["Products index"](https://github.com/acdarroll/jungle-rails/blob/master/docs/images/index.png?raw=true)
 
-!["Product description page"]()
+!["Product description page"](https://github.com/acdarroll/jungle-rails/blob/master/docs/images/product.png?raw=true)
 
-!["Shopping cart"]()
+!["Shopping cart"](https://github.com/acdarroll/jungle-rails/blob/master/docs/images/shopping%20cart.png?raw=true)
 
-!["Order recipt"]()
+!["Order recipt"](https://github.com/acdarroll/jungle-rails/blob/master/docs/images/order%20receipt.png?raw=true)
 
 ## Setup
 
