@@ -4,38 +4,53 @@
   <h1>Signup!</h1>
 </header>
 
-<%= form_for :user, url: "/users" do |f| %>
+<%= form_for :user, url: "/users" do |form| %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger">
+          <strong>The following errors prevented saving:</strong>
+          <ul>
+            <% @user.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
   <div class="row form-group">
     <div class="col-sm-3">
-      <%= f.text_field :first_name, class: "form-control", placeholder: "First name" %>
+      <%= form.text_field :first_name, class: "form-control", placeholder: "First name" %>
     </div>
 
     <div class="col-sm-3">
-      <%= f.text_field :last_name, class: "form-control", placeholder: "Last name" %>
+      <%= form.text_field :last_name, class: "form-control", placeholder: "Last name" %>
     </div>
   </div>
 
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+      <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
     </div>
   </div>
 
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+      <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
     </div>
   </div>
 
   <div class="row">
     <div class="form-group col-sm-6">
-      <%= f.password_field :password_confirmation,
+      <%= form.password_field :password_confirmation,
         class: "form-control",
         placeholder: "Confirm password" %>
     </div>
   </div>
 
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= form.submit "Submit", class: "btn btn-primary" %>
 
 <% end %>

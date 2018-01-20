@@ -5,6 +5,9 @@
       <h4><%= product.name %></h4>
     <% end %>
   </header>
+  <p class="rating">
+    <%= "Rating: #{product.reviews.first && (product.reviews.sum(:rating).to_f / product.reviews.size)}"  %>
+  </p>
   <p class="description">
     <%= product.description %>
   </p>
@@ -21,7 +24,7 @@
     <%= humanized_money_with_symbol product.price %>
   </aside>
 
-  <% if (product.quantity == 0) %>
+  <% if !product.remaining? %>
     <aside class="inventory">
       SOLD OUT!
     </aside>

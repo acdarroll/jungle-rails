@@ -1,6 +1,4 @@
-class Admin::DashboardController < ApplicationController
-
-  before_filter :authenticate
+class Admin::DashboardController < AdminController
 
   def show
   end

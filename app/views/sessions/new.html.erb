@@ -6,6 +6,16 @@
 
 <%= form_tag url: '/login' do %>
 
+  <div class="row">
+    <div class="col-sm-6">
+      <% if @session %>
+        <div class="alert alert-danger">
+          <strong>Incorrect username or password</strong>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
   <div class="row form-group">
     <div class="col-sm-6">
       <%= text_field_tag :email,
