@@ -1,13 +1,16 @@
-<article class="border review">
-  <div class="row">
-  <header class="col-sm-3">
-    <p><b><%= review.user.email %></b></p>
-    <p><b>Rating:</b> <%= review.rating %></p>
-  </header>
-
-  <section class="col-sm-5">
-    <%= review.description %>
-  </section>
-  </div>
-
+<article class="review">
+  <dl class="border dl-horizontal">
+    <dt>
+      <p><b><%= review.user.first_name %></b></p>
+      <p><b>Rating:</b> <%= review.rating %></p>
+      <% if current_user && current_user.id == review.user_id %>
+        <%= link_to product_review_path(@product, review), class: 'btn btn-xs btn-danger', method: :delete do %>
+                -
+        <% end %>
+      <% end %>
+    </dt>
+    <dd>
+      <%= review.comment %>
+    </dd>
+  </dl>
 </article>

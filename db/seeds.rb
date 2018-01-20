@@ -132,29 +132,31 @@ prod12 = cat3.products.create!({
   price: 2_483.75
 })
 
-user1 = User.create!({
-  first_name: "Andrew",
-  last_name: "Carroll",
-  email: "ac@gmail.com",
-  password: "never"
-})
+[1, 2, 3, 4, 5].each do |user|
 
-prod1.reviews.create!({
-  user_id: 1,
-  description: "The is the best product ever!",
-  rating: 5
-})
+  User.create!({
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password_digest: BCrypt::Password.create('password')
+  })
 
-prod2.reviews.create!({
-  user_id: 1,
-  description: "I'm not a fan",
-  rating: 1
-})
+end
 
-prod3.reviews.create!({
-  user_id: 1,
-  description: "So so",
-  rating: 3
-})
+Product.all.each do |prod|
+
+  prod.reviews.create!({
+    user_id: rand(1..5),
+    comment: Faker::Hipster.paragraph,
+    rating: rand(1..5)
+  })
+
+  prod.reviews.create!({
+    user_id: rand(1..5),
+    comment: Faker::Hipster.paragraph,
+    rating: rand(1..5)
+  })
+
+end
 
 puts "DONE!"

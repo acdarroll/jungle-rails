@@ -2,11 +2,15 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
+  # For testing emails with letter_opener
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  resources :products, only: [:index, :show]
+  # Products and categories
+  resources :products, only: [:index, :show] do
+    resources :reviews, only: [:create, :destroy]
+  end
   resources :categories, only: [:show]
 
   # User Authorization
@@ -17,6 +21,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  # Cart resources
   resource :cart, only: [:show] do
     put    :add_item
     delete :remove_item
@@ -24,6 +29,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :show]
 
+  # Admin pages
   namespace :admin do
     root to: 'dashboard#show'
     resources :categories, only: [:index, :new, :create]

@@ -1,0 +1,36 @@
+main section.products-show {
+  .review-form {
+
+  }
+
+
+  .product-detail {
+    .reviews {
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+
+      .dl-horizontal {
+        margin-bottom: 0;
+      }
+
+      .review {
+        display: flex;
+        border-radius: 0;
+        border-bottom: 1px solid #ccc;
+
+        dd {
+          padding: 10px;
+        }
+
+        dt {
+          word-wrap: break-word;
+          height: 100%;
+          padding: 10px;
+          border-right: 1px solid #ccc;
+        }
+      }
+    }
+  }
+}
